@@ -88,6 +88,13 @@ fn buildVmx(b: *Build, target: ResolvedTarget, optimize: OptimizeMode) void {
     // directory.
     b.installArtifact(exe);
 
+    // VMX uses the `clap` dependency.
+    const clap = b.dependency("clap", .{});
+    exe.root_module.addImport("clap", clap.module("clap"));
+
+    // We need C standard library for the VMX executable.
+    exe.linkLibC();
+
     // We do not need to add a "run" step for the VM executable, as it's not
     // intended to be run directly as is. Our manager application will be
     // responsible for launching the VM processes.
