@@ -1,0 +1,15 @@
+# Zig output and caches
+zig-out/
+zig-cache/
+.zig-cache/
+
+# Convenience for VIM users
+*~
+.*.swp
+.swp
+
+# Convenience for VSC users
+.vscode/
+
+# Convenience for OSX users
+.DS_Store
